@@ -7,4 +7,4 @@ cargo run --release
 
 ## Testing
 
-See the '/test' directory for examples of tests. 
+See the '/tests' directory for examples of tests. 
