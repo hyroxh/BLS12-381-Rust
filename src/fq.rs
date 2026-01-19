@@ -65,7 +65,7 @@ impl Fq {
 
         res
     }
-    
+
     pub fn from_hex_str(hex_str: &str) -> Result<Self, &'static str> {
         let mut limbs = [0u32; N_LIMBS];
         let clean_str = hex_str.trim_start_matches("0x");

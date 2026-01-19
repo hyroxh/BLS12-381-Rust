@@ -18,7 +18,6 @@ pub const R_MODULUS: Fr = Fr {
 };
 
 impl Fr {
-	
     // Parse a hex string into Fr
     pub fn from_hex_str(hex_str: &str) -> Result<Self, &'static str> {
         let mut limbs = [0u32; FR_LIMBS];

@@ -35,9 +35,11 @@ impl Fq6 {
             val2: Fq2::zero(),
         }
     }
-	
-	pub fn is_equal(self, other: Self) -> u32 {
-        Fq2::is_equal(self.val0, other.val0) & Fq2::is_equal(self.val1, other.val1) & Fq2::is_equal(self.val2, other.val2)
+
+    pub fn is_equal(self, other: Self) -> u32 {
+        Fq2::is_equal(self.val0, other.val0)
+            & Fq2::is_equal(self.val1, other.val1)
+            & Fq2::is_equal(self.val2, other.val2)
     }
     pub fn mont_rep(&self) -> Self {
         Self {
