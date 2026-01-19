@@ -3,11 +3,7 @@ Concise, proof-of-concept implementation of the Ate pairing for the BLS12-381 cu
 
 ## Build instructions
 
-mkdir build
-cd build
-cmake ..
-make
-../tests/test
+cargo run --release
 
 ## Testing
 
