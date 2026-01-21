@@ -226,13 +226,13 @@ impl Add for Fq {
             e.limbs[i] = diff as u32;
             c2 = (diff >> 63) & 1;
         }
-
+        
         // If c2 == 0, it means d >= Q, so we choose e.
         // If c2 == 1, it means d < Q, so we choose d.
         // mask = -(c2 == 0) -> 0xFFFFFFFF if c2=0
-        let mask_cond = if c2 == 0 { 1 } else { 0 };
-        let mask = (mask_cond as i32).wrapping_neg() as u32;
-
+        let mask_cond = c2 ^ 1u64;
+	let mask = (mask_cond as u32).wrapping_neg();
+	
         let mut rop = Fq::zero();
         for i in 0..N_LIMBS {
             rop.limbs[i] = (e.limbs[i] & mask) | (d.limbs[i] & !mask);
@@ -266,11 +266,12 @@ impl Sub for Fq {
             e.limbs[i] = sum as u32;
             c2 = sum >> 32;
         }
-
+        
         // if c1 == 1 (borrow occurred), result is negative, so we add Q (select e).
         // if c1 == 0, result is positive, we select d.
-        let mask_cond = if c1 == 1 { 1 } else { 0 };
-        let mask = (mask_cond as i32).wrapping_neg() as u32;
+        let mask_cond = c1 as u32;
+        let mask = mask_cond.wrapping_neg();
+      
 
         let mut rop = Fq::zero();
         for i in 0..N_LIMBS {

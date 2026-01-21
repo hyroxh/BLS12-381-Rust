@@ -51,7 +51,7 @@ fn main() {
     let a = Fr::from_hex_str("aaaaaaaaaa33333333333333333333").unwrap();
     let b = Fr::from_hex_str("1").unwrap();
 
-    if ate_test(&a, &b, 0) == 1 {
+    if ate_test(&a, &b, 1) == 1 {
         println!("Test 3:\tSuccess!");
         println!("----------");
     }
@@ -60,7 +60,7 @@ fn main() {
     let a = Fr::from_hex_str("1").unwrap();
     let b = Fr::from_hex_str("ffffffffffffffffffff7777").unwrap();
 
-    if ate_test(&a, &b, 0) == 1 {
+    if ate_test(&a, &b, 1) == 1 {
         println!("Test 4:\tSuccess!");
         println!("----------");
     }
